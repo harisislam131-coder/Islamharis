@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Catch the Ball Game</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #222;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #gameArea {
+      width: 400px;
+      height: 500px;
+      background: #333;
+      margin: 30px auto;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #fff;
+      border-radius: 10px;
+    }
+
+    #ball {
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 180px;
+    }
+
+    #paddle {
+      width: 100px;
+      height: 20px;
+      background: cyan;
+      position: absolute;
+      bottom: 10px;
+      left: 150px;
+      border-radius: 10px;
+    }
+
+    #message {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    #chatHistory {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #4caf50;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    #chatHistory:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Catch the Ball 🎮</h1>
+  <p>Use ⬅️ and ➡️ keys to move the paddle</p>
+  
+  <div id="gameArea">
+    <div id="ball"></div>
+    <div id="paddle"></div>
+  </div>
+
+  <div id="message"></div>
+
+  <!-- AI Chat History Button -->
+  <a id="chatHistory" href="https://chatgpt.com/share/68ca310c-30c4-8005-9016-4f12093253b8" target="_blank">
+    🔗 View AI Chat History
+  </a>
+
+  <script>
+    const ball = document.getElementById("ball");
+    const paddle = document.getElementById("paddle");
+    const message = document.getElementById("message");
+
+    let ballTop = 0;
+    let ballLeft = 180;
+    let paddleLeft = 150;
+    let gameOver = false;
+    let speed = 2;
+
+    // Ball falling animation
+    function dropBall() {
+      if (gameOver) return;
+      ballTop += speed;
+      ball.style.top = ballTop + "px";
+
+      if (ballTop > 470) { // ball reached bottom
+        if (
+          ballLeft + 30 > paddleLeft &&
+          ballLeft < paddleLeft + 100
+        ) {
+          message.textContent = "🎉 You Win!";
+          message.style.color = "lime";
+        } else {
+          message.textContent = "❌ You Lose!";
+          message.style.color = "red";
+        }
+        gameOver = true;
+      } else {
+        requestAnimationFrame(dropBall);
+      }
+    }
+
+    // Paddle movement
+    document.addEventListener("keydown", (e) => {
+      if (gameOver) return;
+      if (e.key === "ArrowLeft" && paddleLeft > 0) {
+        paddleLeft -= 20;
+      } else if (e.key === "ArrowRight" && paddleLeft < 300) {
+        paddleLeft += 20;
+      }
+      paddle.style.left = paddleLeft + "px";
+    });
+
+    // Start game
+    dropBall();
+  </script>
+</body>
+  </html>
