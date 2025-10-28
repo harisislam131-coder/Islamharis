@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Haris Islam — Portfolio + Snake Games</title>
+  <title>Haris Islam — Portfolio</title>
   <style>
     body {
       margin: 0;
@@ -11,220 +11,73 @@
       background: linear-gradient(120deg,#4facfe,#00f2fe);
       color: #fff;
     }
-    .container { max-width: 1100px; margin: auto; padding: 20px; }
-    header { text-align: center; margin-bottom: 20px; }
-    h1 { margin: 0; font-size: 2.5em; }
-    h2 { margin: 5px 0 0; font-weight: 400; }
-    .card {
-      background: rgba(0,0,0,0.25);
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.3);
       border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 20px;
     }
-    canvas {
-      background: rgba(0,0,0,0.15);
-      border-radius: 8px;
-      width: 100%;
-      height: 360px;
-      display: block;
+    h1 { text-align: center; margin-bottom: 10px; font-size: 2.5em; }
+    h2 { text-align: center; margin-bottom: 30px; font-weight: 400; font-size: 1.3em; }
+    h3 { margin-top: 30px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px; }
+    h4 { margin-top: 20px; }
+    p, ul { line-height: 1.6; }
+    ul { margin-left: 20px; }
+    a {
+      color: #ffd700; /* bright gold to highlight links */
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
     }
-    .score { font-weight: bold; margin: 5px 0; }
-    button { padding: 6px 12px; margin: 2px; border: none; border-radius: 6px; cursor: pointer; }
-    footer { text-align: center; margin-top: 20px; padding: 10px; background: rgba(0,0,0,0.35); border-radius: 10px; }
-    .touch-pad { margin-top: 6px; text-align: center; }
-    .tp-btn { width: 46px; height: 46px; margin: 2px; border-radius: 6px; border: none; background: rgba(255,255,255,0.15); color: #fff; font-size: 18px; }
+    a:hover {
+      text-decoration: underline;
+      color: #ffea00; /* brighter gold on hover */
+    }
+    footer { text-align: center; margin-top: 40px; font-size: 0.9em; color: rgba(255,255,255,0.7); }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>👋 Hi, I'm Haris Islam</h1>
-      <h2>From Karachi, Pakistan | Student at Dong-A University</h2>
-      <p>
-        <a href="https://github.com/harisislam" target="_blank" style="color:white">💻 GitHub</a> |
-        <a href="mailto:your-email@example.com" style="color:white">📧 Email</a> |
-        <a href="https://docs.google.com/document/d/e/2PACX-1vSd2GPQ-fffF4TP3g1stSD17QMYkkXx3xWwhKdZxwrVahZ19mxNY4LoDroMAooo5Re4M0lNamzGI4qH/pub" target="_blank" style="color:white">📝 AI Prompt</a>
-      </p>
-    </header>
+    <h1>👋 Hi, I'm Haris Islam</h1>
+    <h2>From Karachi, Pakistan | Student at Dong-A University & IBM Learning Program</h2>
+    <p>
+      <a href="https://github.com/harisislam" target="_blank">💻 GitHub</a> |
+      <a href="mailto:your-email@example.com">📧 Email</a> |
+      <a href="https://docs.google.com/document/d/e/2PACX-1vSd2GPQ-fffF4TP3g1stSD17QMYkkXx3xWwhKdZxwrVahZ19mxNY4LoDroMAooo5Re4M0lNamzGI4qH/pub" target="_blank">📝 AI Prompt</a>
+    </p>
 
-    <div class="card">
-      <h3>Simple Snake</h3>
-      <p class="score" id="simpleScore">Score: 0</p>
-      <button id="simplePause">Pause</button>
-      <button id="simpleRestart">Restart</button>
-      <canvas id="simpleCanvas" width="600" height="400"></canvas>
-      <div class="touch-pad">
-        <button class="tp-btn" data-game="simple" data-dir="up">↑</button><br>
-        <button class="tp-btn" data-game="simple" data-dir="left">←</button>
-        <button class="tp-btn" data-game="simple" data-dir="down">↓</button>
-        <button class="tp-btn" data-game="simple" data-dir="right">→</button>
-      </div>
-    </div>
+    <h3>Skills</h3>
+    <ul>
+      <li>Python programming for data analysis, automation, and simple projects</li>
+      <li>Microsoft Excel for data management, formulas, and reporting</li>
+      <li>Microsoft Word and PowerPoint for professional documentation and presentations</li>
+      <li>Basic knowledge of digital tools through IBM learning modules</li>
+    </ul>
 
-    <div class="card">
-      <h3>Advanced Snake</h3>
-      <p class="score" id="advScore">Score: 0 | Level: 1</p>
-      <button id="advPause">Pause</button>
-      <button id="advRestart">Restart</button>
-      <canvas id="advCanvas" width="600" height="400"></canvas>
-      <div class="touch-pad">
-        <button class="tp-btn" data-game="adv" data-dir="up">↑</button><br>
-        <button class="tp-btn" data-game="adv" data-dir="left">←</button>
-        <button class="tp-btn" data-game="adv" data-dir="down">↓</button>
-        <button class="tp-btn" data-game="adv" data-dir="right">→</button>
-      </div>
-    </div>
+    <h3>Learning Process</h3>
+    <ul>
+      <li>Programming Fundamentals: <a href="https://colab.research.google.com/drive/1L5jl6kZAK9RRF64PXfATxDxz7bCQCCbh?usp=sharing" target="_blank">Click here</a></li>
+      <li>Learning Python: <a href="https://chatgpt.com/share/69007e18-1424-8005-a4a1-8067c80e4fb8" target="_blank">Click here</a></li>
+    </ul>
+
+    <h3>Projects</h3>
+
+    <h4>My Game</h4>
+    <p>Check out one of my games: <a href="https://harisislam131-coder.github.io/Islamharis/Mom.html" target="_blank">Play Game</a></p>
+
+    <h4>Game Improvements</h4>
+    <p>Working on improving game features, adding interactivity, scoring, and visuals: 
+       <a href="https://harisislam131-coder.github.io/Islamharis/game%20improvement.html" target="_blank">Check Improvements</a>
+    </p>
+
+    <h4>AI Prompt</h4>
+<p>My AI projects and prompt experiments: 
+  <a href="https://docs.google.com/document/d/18_6HBfRvDjt35xrQZyIc6yZSGkMAqW4N/edit?usp=sharing&ouid=103351447866388279672&rtpof=true&sd=true" target="_blank">View AI Prompt</a>
+</p>
+
 
     <footer>© 2025 Haris Islam | Made with ❤️</footer>
   </div>
-
-<script>
-/* ---------------- SIMPLE SNAKE ---------------- */
-(function(){
-  const canvas = document.getElementById('simpleCanvas');
-  const ctx = canvas.getContext('2d');
-  const scoreEl = document.getElementById('simpleScore');
-  const pauseBtn = document.getElementById('simplePause');
-  const restartBtn = document.getElementById('simpleRestart');
-
-  const size = 20;
-  const cols = canvas.width / size;
-  const rows = canvas.height / size;
-
-  let snake, dir, food, score, alive, paused, nextDir, speed, step;
-
-  function reset(){
-    snake = [{x: Math.floor(cols/2), y: Math.floor(rows/2)}];
-    dir = {x:1,y:0}; nextDir={x:1,y:0};
-    food = randomFood();
-    score=0; alive=true; paused=false; speed=8; step=0;
-    scoreEl.textContent="Score: 0";
-  }
-
-  function randomFood(){
-    return {x: Math.floor(Math.random()*cols), y: Math.floor(Math.random()*rows)};
-  }
-
-  function update(dt){
-    if(!alive||paused) return;
-    step+=dt;
-    if(step>1/speed){
-      step=0;
-      if(!(nextDir.x==-dir.x&&nextDir.y==-dir.y)) dir=nextDir;
-      let head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
-      if(head.x<0) head.x=cols-1;
-      if(head.y<0) head.y=rows-1;
-      if(head.x>=cols) head.x=0;
-      if(head.y>=rows) head.y=0;
-      if(snake.some(s=>s.x==head.x&&s.y==head.y)){alive=false;return;}
-      snake.unshift(head);
-      if(head.x==food.x&&head.y==food.y){
-        score+=10; scoreEl.textContent="Score: "+score; food=randomFood(); speed+=0.3;
-      } else snake.pop();
-    }
-  }
-
-  function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#ff6b6b"; ctx.fillRect(food.x*size,food.y*size,size,size);
-    ctx.fillStyle="#ffd166";
-    snake.forEach((s,i)=>ctx.fillRect(s.x*size,s.y*size,size,size));
-    if(!alive){ctx.fillStyle="white";ctx.fillText("Game Over",250,200);}
-    if(paused&&alive){ctx.fillText("Paused",260,200);}
-  }
-
-  let last=0;
-  function loop(t){let dt=(t-last)/1000;last=t;update(dt);draw();requestAnimationFrame(loop);}
-  requestAnimationFrame(loop);
-
-  window.addEventListener('keydown',e=>{
-    if(e.key=="ArrowUp"||e.key=="w")nextDir={x:0,y:-1};
-    if(e.key=="ArrowDown"||e.key=="s")nextDir={x:0,y:1};
-    if(e.key=="ArrowLeft"||e.key=="a")nextDir={x:-1,y:0};
-    if(e.key=="ArrowRight"||e.key=="d")nextDir={x:1,y:0};
-    if(e.key==" ") paused=!paused;
-  });
-
-  document.querySelectorAll('.tp-btn[data-game="simple"]').forEach(b=>{
-    b.onclick=()=>{let d=b.dataset.dir;if(d=="up")nextDir={x:0,y:-1};
-      if(d=="down")nextDir={x:0,y:1};if(d=="left")nextDir={x:-1,y:0};if(d=="right")nextDir={x:1,y:0};};
-  });
-
-  pauseBtn.onclick=()=>paused=!paused;
-  restartBtn.onclick=reset;
-  reset();
-})();
-
-/* ---------------- ADVANCED SNAKE ---------------- */
-(function(){
-  const canvas=document.getElementById('advCanvas');
-  const ctx=canvas.getContext('2d');
-  const scoreEl=document.getElementById('advScore');
-  const pauseBtn=document.getElementById('advPause');
-  const restartBtn=document.getElementById('advRestart');
-
-  let snake,dir,desiredDir,head,food,score,level,segments,speed,alive,paused;
-
-  function reset(){
-    snake=[]; segments=6;
-    head={x:15,y:10}; dir={x:1,y:0}; desiredDir={x:1,y:0};
-    for(let i=0;i<segments;i++){snake.push({x:head.x-i,y:head.y});}
-    food=randomFood();
-    score=0; level=1; speed=5; alive=true; paused=false;
-    updateUI();
-  }
-
-  function updateUI(){
-    scoreEl.textContent=`Score: ${score} | Level: ${level}`;
-  }
-
-  function randomFood(){
-    const cols=Math.floor(canvas.width/20);
-    const rows=Math.floor(canvas.height/20);
-    return {x:Math.floor(Math.random()*cols),y:Math.floor(Math.random()*rows)};
-  }
-
-  function update(dt){
-    if(!alive||paused)return;
-    if(!(desiredDir.x==-dir.x&&desiredDir.y==-dir.y)) dir=desiredDir;
-    head={x:head.x+dir.x,y:head.y+dir.y};
-    if(head.x<0)head.x=29;if(head.y<0)head.y=19;if(head.x>29)head.x=0;if(head.y>19)head.y=0;
-    if(snake.some((s,i)=>i>2&&s.x==head.x&&s.y==head.y)){alive=false;return;}
-    snake.unshift(head); if(snake.length>segments)snake.pop();
-    if(head.x==food.x&&head.y==food.y){
-      score+=10;segments++;food=randomFood();speed+=0.2;
-      if(score%50==0){level++;speed+=0.5;}
-      updateUI();
-    }
-  }
-
-  function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#ff6b6b"; ctx.fillRect(food.x*20,food.y*20,20,20);
-    ctx.fillStyle="#8ce99a"; snake.forEach((s,i)=>ctx.fillRect(s.x*20,s.y*20,20,20));
-    if(!alive){ctx.fillStyle="white";ctx.fillText("Game Over",250,200);}
-    if(paused&&alive){ctx.fillText("Paused",260,200);}
-  }
-
-  let last=0,acc=0;
-  function loop(t){let dt=(t-last)/1000;last=t;acc+=dt;if(acc>1/speed){update(acc);acc=0;}draw();requestAnimationFrame(loop);}
-  requestAnimationFrame(loop);
-
-  window.addEventListener('keydown',e=>{
-    if(e.key=="ArrowUp"||e.key=="w")desiredDir={x:0,y:-1};
-    if(e.key=="ArrowDown"||e.key=="s")desiredDir={x:0,y:1};
-    if(e.key=="ArrowLeft"||e.key=="a")desiredDir={x:-1,y:0};
-    if(e.key=="ArrowRight"||e.key=="d")desiredDir={x:1,y:0};
-    if(e.key==" ") paused=!paused;
-  });
-  document.querySelectorAll('.tp-btn[data-game="adv"]').forEach(b=>{
-    b.onclick=()=>{let d=b.dataset.dir;if(d=="up")desiredDir={x:0,y:-1};
-      if(d=="down")desiredDir={x:0,y:1};if(d=="left")desiredDir={x:-1,y:0};if(d=="right")desiredDir={x:1,y:0};};
-  });
-  pauseBtn.onclick=()=>paused=!paused;
-  restartBtn.onclick=reset;
-  reset();
-})();
-</script>
 </body>
 </html>
