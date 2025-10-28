@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Catch the Ball Game</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #222;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #gameArea {
+      width: 400px;
+      height: 500px;
+      background: #333;
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #fff;
+      border-radius: 10px;
+    }
+
+    #ball {
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 180px;
+    }
+
+    #paddle {
+      width: 100px;
+      height: 20px;
+      background: cyan;
+      position: absolute;
+      bottom: 10px;
+      left: 150px;
+      border-radius: 10px;
+    }
+
+    #stats {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    #message {
+      font-size: 24px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    a#aiChatLink {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #0af;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    a#aiChatLink:hover {
+      background-color: #08c;
+    }
+
+    button#restartBtn {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button#restartBtn:hover {
+      background-color: #0c0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Catch the Ball 🎮</h1>
+  <p>Use ⬅️ and ➡️ keys to move the paddle</p>
+
+  <div id="gameArea">
+    <div id="ball"></div>
+    <div id="paddle"></div>
+  </div>
+
+  <div id="stats">Score: 0 | Misses: 0</div>
+  <div id="message"></div>
+  <a id="aiChatLink" href="https://chatgpt.com/share/69008608-2510-8005-ba29-c663ed345527" target="_blank">Open My AI Chat 🤖</a>
+  <br>
+  <button id="restartBtn">Restart Game 🔄</button>
+
+  <script>
+    const ball = document.getElementById("ball");
+    const paddle = document.getElementById("paddle");
+    const stats = document.getElementById("stats");
+    const message = document.getElementById("message");
+    const restartBtn = document.getElementById("restartBtn");
+
+    let ballTop = 0;
+    let ballLeft = 180;
+    let paddleLeft = 150;
+    let score = 0;
+    let misses = 0;
+    let speed = 2;
+    let gameOver = false;
+
+    function dropBall() {
+      if (gameOver) return;
+
+      ballTop += speed;
+      ball.style.top = ballTop + "px";
+
+      if (ballTop > 470) {
+        if (ballLeft + 30 > paddleLeft && ballLeft < paddleLeft + 100) {
+          score++;
+        } else {
+          misses++;
+        }
+
+        stats.textContent = `Score: ${score} | Misses: ${misses}`;
+
+        if (score >= 50) {
+          message.textContent = "🎉 You Win!";
+          message.style.color = "lime";
+          gameOver = true;
+          restartBtn.style.display = "inline-block";
+        } else if (misses >= 3) {
+          message.textContent = "❌ Game Over!";
+          message.style.color = "red";
+          gameOver = true;
+          restartBtn.style.display = "inline-block";
+        } else {
+          // Reset ball
+          ballTop = 0;
+          ballLeft = Math.random() * 370;
+          ball.style.left = ballLeft + "px";
+        }
+      }
+
+      requestAnimationFrame(dropBall);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (gameOver) return;
+      if (e.key === "ArrowLeft" && paddleLeft > 0) {
+        paddleLeft -= 20;
+      } else if (e.key === "ArrowRight" && paddleLeft < 300) {
+        paddleLeft += 20;
+      }
+      paddle.style.left = paddleLeft + "px";
+    });
+
+    restartBtn.addEventListener("click", () => {
+      // Reset all variables
+      ballTop = 0;
+      ballLeft = 180;
+      paddleLeft = 150;
+      score = 0;
+      misses = 0;
+      gameOver = false;
+      stats.textContent = `Score: ${score} | Misses: ${misses}`;
+      message.textContent = "";
+      ball.style.left = ballLeft + "px";
+      paddle.style.left = paddleLeft + "px";
+      restartBtn.style.display = "none";
+
+      dropBall();
+    });
+
+    dropBall();
+  </script>
+</body>
+</html>
